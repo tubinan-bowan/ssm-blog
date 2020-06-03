@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Mapper接口的类路径与Mapper.xml文件中的namespace相同-->
+<mapper namespace="me.study.blog.dao.UserMapper">
+    <select id="getUserByName" resultType="me.study.blog.entity.User">
+         select * from blog_user where name = #{name}
+    </select>
+    <select id="getUserList" resultType="me.study.blog.entity.User">
+         select * from blog_user
+    </select>
+    <insert id="insert" parameterType="me.study.blog.entity.User" useGeneratedKeys="true"  keyProperty="id">
+         insert into blog_user(name, password ,sex)values(#{name},#{password},#{sex})
+    </insert>
+    <delete id="delete" parameterType="me.study.blog.entity.User">
+        delete from blog_user where id = #{id}
+    </delete>
+</mapper>

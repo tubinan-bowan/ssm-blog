@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Mapper接口的类路径与Mapper.xml文件中的namespace相同-->
+<mapper namespace="me.study.blog.dao.BlogMapper">
+    <select id="getBlogList" resultType="me.study.blog.entity.Blog">
+        select id, title, content, author, create_time as createTime from blog_blog
+    </select>
+    <select id="getBlogById" resultType="me.study.blog.entity.Blog">
+         select * from blog_blog where id = #{id}
+    </select>
+    <insert id="insert" parameterType="me.study.blog.entity.Blog" useGeneratedKeys="true"  keyProperty="id">
+        insert into blog_blog (title, content ) values (#{title}, #{content})
+    </insert>
+    <delete id="delete" parameterType="me.study.blog.entity.Blog">
+        delete from blog_blog where id = #{id}
+    </delete>
+</mapper>
